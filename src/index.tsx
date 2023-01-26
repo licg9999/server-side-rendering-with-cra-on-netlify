@@ -1,15 +1,25 @@
+import { Hydrate, QueryClientProvider } from '@tanstack/react-query';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import { App } from './App';
 import './index.css';
-import App from './App';
+import { createQueryClient } from './queries/queryClient';
 import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
+const queryClient = createQueryClient();
+const dehydratedState = window.__REACT_QUERY_STATE__ ?? {};
+
+ReactDOM.hydrateRoot(
+  document.getElementById('root') as HTMLElement,
   <React.StrictMode>
-    <App />
+    <QueryClientProvider client={queryClient}>
+      <Hydrate state={dehydratedState}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Hydrate>
+    </QueryClientProvider>
   </React.StrictMode>
 );
 

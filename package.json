@@ -1,27 +1,18 @@
 {
+  "private": true,
   "name": "b17694d",
   "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.11",
-    "@types/react": "^18.0.26",
-    "@types/react-dom": "^18.0.10",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "typescript": "^4.9.4",
-    "web-vitals": "^2.1.4"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start:client": "cross-env BROWSER=none FAST_REFRESH=false react-scripts start",
+    "start:server": "cross-env BUILD_PATH=server webpack -w -c webpack.server.config.js",
+    "start-all": "run-p start:*",
+    "dev": "netlify dev",
+    "build:client": "cross-env BUILD_PATH=client react-scripts build",
+    "build:server": "cross-env BUILD_PATH=server NODE_ENV=production webpack -c webpack.server.config.js",
+    "build-all": "run-s build:*",
+    "test": "react-scripts test"
   },
+  "proxy": "http://127.0.0.1:8888",
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -39,5 +30,34 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "dependencies": {
+    "@netlify/functions": "^1.3.0",
+    "@tanstack/react-query": "^4.23.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/jsdom": "^20.0.1",
+    "@types/lodash": "^4.14.191",
+    "@types/node": "^16.18.11",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.10",
+    "axios": "^1.2.4",
+    "cross-env": "^7.0.3",
+    "glob": "^8.0.3",
+    "jsdom": "^20.0.3",
+    "lodash": "^4.17.21",
+    "npm-run-all": "^4.1.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.7.0",
+    "react-scripts": "5.0.1",
+    "transpile-webpack-plugin": "^1.1.1",
+    "typescript": "^4.9.4",
+    "web-vitals": "^2.1.4",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-node-externals": "^3.0.0"
   }
 }

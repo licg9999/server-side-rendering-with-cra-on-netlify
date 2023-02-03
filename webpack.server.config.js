@@ -19,6 +19,7 @@ removeUnusedPluginsAndOptimizers();
 
 webpackConfig.plugins.push(
   new TranspilePlugin({
+    longestCommonDir: __dirname + '/src',
     extentionMapping: { '.ts': '.js', '.tsx': '.js' },
   })
 );

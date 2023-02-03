@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { ParamsOfGetRepoStarCount, ReturnOfGetRepoStarCount } from '../server/gh/repo';
+import type { ParamsOfGetRepoStarCount, ReturnOfGetRepoStarCount } from '../server/gh/repo';
 
 export function getKeyOfGhRepoStarCountQuery(params: ParamsOfGetRepoStarCount) {
   return ['ghRepoStarCountQuery', params];

@@ -1,7 +1,7 @@
 import { FC, useMemo } from 'react';
-import logo from '../../assets/logo.svg';
+import logo from '../../logo.svg';
 import { useGhRepoStarCountQuery } from '../../queries/gh';
-import { ParamsOfGetRepoStarCount } from '../../server/gh/repo';
+import type { ParamsOfGetRepoStarCount } from '../../server/gh/repo';
 import styles from './Page.module.css';
 
 export const paramOfGhRepoStarCountQuery: ParamsOfGetRepoStarCount = {
@@ -18,7 +18,7 @@ export const HomePage: FC = () => {
       <header className={styles.header}>
         <img src={logo} className={styles.logo} alt="logo" />
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+          Edit <code>src/**/*.tsx</code> and save to reload.
         </p>
         <a
           className={styles.link}

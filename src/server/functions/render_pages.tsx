@@ -36,6 +36,7 @@ export const handler: Handler = async (event, context) => {
       </QueryClientProvider>
     );
     document.querySelector('#root')!.innerHTML = rootHtml;
+    queryClient.clear();
   } catch (e) {
     console.error(e);
   }
